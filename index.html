@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url(https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg)">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Shobhit's Blog</h1>
+              <span class="subheading">Blog bnaaya h frandsss like and share</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          {% for post in posts %}
+
+          <div class="post-preview">
+            <a href="/post/{{ post.slug }}">
+              <h2 class="post-title">
+
+                {{post.title}}
+                
+              </h2>
+              <h3 class="post-subtitle">
+                {{post.tagline}}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#">{{post.whom}}</a>
+              on {{post.date}}</p>
+          </div>
+          {{post.content[:30]}}.....
+
+          <hr>
+
+          {% endfor %}
+
+
+          <!--for loop for posts from database-->
+
+          
+          <!-- Pager -->
+          <div class="clearfix">
+            <a class="btn btn-primary float-left" href="{{prev}}">&larr; Older Posts</a>
+            <a class="btn btn-primary float-right" href="{{next}}">Newer Posts &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}

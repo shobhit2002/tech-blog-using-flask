@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url(https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg)">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>ADMIN PANEL</h1>
+              <span class="subheading">You Can Edit Your Blog Here</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+             
+
+      <a href="/edit/0"><button class="btn btn-primary">Add a new Post</button></a>
+      <a href="/upload_file" target="_blank"><button class="btn btn-primary">Upload a File</button></a>
+      <a href="/logout"><button class="btn btn-primary">Logout</button></a><br><br>
+      
+
+
+      <h1>Edit Posts</h1>    <br>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>By</th>
+                <th>Date</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            {% for i in post %}
+
+              <tr>
+                <td>{{i.title}}</td>
+
+                <td>{{i.whom}}</td>
+
+                <td>{{i.date}}</td>
+
+                <td><a href="/edit/{{i.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+
+                <td><a href="/delete/{{i.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+              </tr>
+
+              {% endfor %}
+              
+            </tbody>
+          </table>
+<br>
+<script>
+    function cftn()
+        {
+            
+            if(confirm("Do u really want to delete this post!!"))
+            {
+                return true;
+                 
+            }
+            else
+            {
+               return false;
+                
+            }
+           
+            
+        }
+</script>
+
+    {% endblock %}
